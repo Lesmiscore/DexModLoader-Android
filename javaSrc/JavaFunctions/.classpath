@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java7"/>
+	<classpathentry kind="lib" path="M:/MyDocs/adt-bundle-windows-x86-20131030/sdk/platforms/android-21/android.jar" sourcepath="M:/MyDocs/adt-bundle-windows-x86-20131030/sdk/sources/android-21"/>
+	<classpathentry kind="lib" path="M:/MyDocs/adt-bundle-windows-x86-20131030/sdk/platforms/android-21/uiautomator.jar" sourcepath="M:/MyDocs/adt-bundle-windows-x86-20131030/sdk/sources/android-21"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
