@@ -25,12 +25,12 @@ public final class MainManager {
 			"games/com.mojang");
 	static File jMods = new File(mcGames, "javaMods");
 	static Map<String, Function> functions = new HashMap<>();
+	static StringWriter log = new StringWriter();
 	static {
 		if (!jMods.exists()) {
 			jMods.mkdir();
 		}
 	}
-	static StringWriter log;
 
 	public static void registerMethod(String name, Function method) {
 		if (name == null | method == null) {
