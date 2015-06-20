@@ -1,7 +1,21 @@
 package modules;
 
+import android.content.Context;
+
 public abstract class ModBase implements ModHooks {
+	MainManager mm;
+	Context androidContext;
+
+	protected ModBase(MainManager mainManager, Context ctx) {
+		this.mm = mainManager;
+		this.androidContext = ctx;
+	}
+
 	public abstract ModInfo getModInfo();
+
+	public abstract void onEnable();
+
+	public abstract void onDisable();
 
 	@Override
 	public void useItem(int x, int y, int z, short itemId, short blockId,
