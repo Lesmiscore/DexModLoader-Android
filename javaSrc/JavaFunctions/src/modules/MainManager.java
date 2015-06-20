@@ -17,6 +17,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import modules.methods.ModMethods;
+
 import org.mozilla.javascript.Function;
 
 import android.content.Context;
@@ -39,15 +41,17 @@ public final class MainManager {
 		if (name == null | method == null) {
 			return;
 		}
-		functions.put(name, method);
+		functions.put(name.toLowerCase(), method);
 	}
 
-	protected static void callMethod(String name, Object[] args) {
+	public static Object callMethod(String name, Object[] args) {
+		name = name.toLowerCase();
 		if (functions.containsKey(name)) {
 			Function f = functions.get(name);
-			f.call(org.mozilla.javascript.Context.getCurrentContext(),
+			return f.call(org.mozilla.javascript.Context.getCurrentContext(),
 					f.getParentScope(), f, args);
 		}
+		return null;
 	}
 
 	private static void writeLog(MainManager mm, String text) {
@@ -69,6 +73,7 @@ public final class MainManager {
 	Map<ModBase, Boolean> mods = new HashMap<>();
 	Set<ClassLoader> classLoaders = new HashSet<>();
 	Set<Class<?>> classes = new HashSet<>();
+	protected ModMethods methods = new ModMethods(this);
 
 	public MainManager(Context c) {
 		this(c, jMods);
@@ -147,6 +152,10 @@ public final class MainManager {
 	public int hashCode() {
 		// TODO 自動生成されたメソッド・スタブ
 		return super.hashCode() ^ context.hashCode();
+	}
+
+	public ModHooks getModHooksObserver() {
+		return observerHooks;
 	}
 
 	ModHooks observerHooks = new ModHooks() {
