@@ -72,58 +72,44 @@ public final class ModMethods {
 		MainManager.callMethod("setPosition", new Object[] { entity, x, y, z });
 	}
 
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
+	public void setPositionRelative(Object entity, double x, double y, double z) {
+		MainManager.callMethod("setPositionRelative", new Object[] { entity, x,
+				y, z });
 	}
 
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
+	public void setRot(Object ent, double vertical, double horizontal) {
+		MainManager.callMethod("setRot", new Object[] { ent, vertical,
+				horizontal });
 	}
 
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
+	public void setTile(int x, int y, int z, int id, int damage) {
+		MainManager.callMethod("setTile", new Object[] { x, y, z, id, damage });
 	}
 
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
+	public void setVelX(Object entity, double speed) {
+		MainManager.callMethod("setVelX", new Object[] { entity, speed });
 	}
 
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
+	public void setVelY(Object entity, double speed) {
+		MainManager.callMethod("setVelY", new Object[] { entity, speed });
 	}
 
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
+	public void setVelZ(Object entity, double speed) {
+		MainManager.callMethod("setVelZ", new Object[] { entity, speed });
 	}
 
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
+	public void spawnChicken(double x, double y, double z, String skinURL) {
+		MainManager.callMethod("spawnChicken",
+				new Object[] { x, y, z, skinURL });
 	}
 
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
+	public void spawnCow(double x, double y, double z, String skinURL) {
+		MainManager.callMethod("spawnCow", new Object[] { x, y, z, skinURL });
 	}
 
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
-	}
-
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
-	}
-
-	public void addItemInventory(int id, int amount, int damage) {
-		MainManager.callMethod("addItemInventory", new Object[] { id, amount,
-				damage });
+	public void spawnPigZombie(double x, double y, double z, int id,
+			String skinURL) {
+		MainManager.callMethod("spawnPigZombie", new Object[] { x, y, z, id,
+				skinURL });
 	}
 }
