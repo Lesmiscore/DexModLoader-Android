@@ -3,16 +3,19 @@ package modules;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.mozilla.javascript.Function;
 
@@ -63,9 +66,9 @@ public final class MainManager {
 
 	File modDir;
 	Context context;
-	List<ModBase> mods = new ArrayList<>();
-	List<ClassLoader> classLoaders = new ArrayList<>();
-	List<Class<?>> classes = new ArrayList<>();
+	Map<ModBase, Boolean> mods = new HashMap<>();
+	Set<ClassLoader> classLoaders = new HashSet<>();
+	Set<Class<?>> classes = new HashSet<>();
 
 	public MainManager(Context c) {
 		this(c, jMods);
@@ -120,7 +123,7 @@ public final class MainManager {
 					writeLog(this, "Enabling mod:" + mod.getModInfo().getName());
 					mod.onEnable();
 					writeLog(this, "Enabled mod:" + mod.getModInfo().getName());
-					mods.add(mod);
+					mods.put(mod, true);
 				} catch (Throwable ex) {
 
 				}
@@ -145,4 +148,417 @@ public final class MainManager {
 		// TODO 自動生成されたメソッド・スタブ
 		return super.hashCode() ^ context.hashCode();
 	}
+
+	ModHooks observerHooks = new ModHooks() {
+
+		@Override
+		public void useItem(int x, int y, int z, short itemId, short blockId,
+				byte side, short itemDamage, short blockDamage) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.useItem(x, y, z, itemId, blockId, side, itemDamage,
+							blockDamage);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void startDestroyBlock(int x, int y, int z, byte side) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.startDestroyBlock(x, y, z, side);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void serverMessageReceiveHook(String text) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.serverMessageReceiveHook(text);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void selectLevelHook() {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.selectLevelHook();
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void procCmd(String text) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.procCmd(text);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void newLevel(boolean isLocal) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.newLevel(isLocal);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void modTick() {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.modTick();
+				} catch (final Throwable ex) {
+					new Thread() {
+						@Override
+						public void run() {
+							try {
+								StringWriter sw = new StringWriter();
+								ex.printStackTrace(new PrintWriter(sw));
+								BufferedReader br = new BufferedReader(
+										new StringReader(sw.toString()));
+								while (true) {
+									String s = br.readLine();
+									if (s != null)
+										writeLog(MainManager.this, s);
+								}
+							} catch (IOException e) {
+								// TODO 自動生成された catch ブロック
+								e.printStackTrace();
+							}
+						}
+					}.start();
+				}
+			}
+		}
+
+		@Override
+		public void levelEventHook(Object entity, int eventType, int x, int y,
+				int z, Object data) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.levelEventHook(entity, eventType, x, y, z, data);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void leaveGame() {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.leaveGame();
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void entityRemovedHook(Object entity) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.entityRemovedHook(entity);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void entityAddedHook(Object entity) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.entityAddedHook(entity);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void destroyBlock(int x, int y, int z, byte side) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.destroyBlock(x, y, z, side);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void deathHook(Object murdererEnt, Object victimEnt) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.deathHook(murdererEnt, victimEnt);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void chatReceiveHook(Object senderEnt, String message) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.chatReceiveHook(senderEnt, message);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void blockEventHook(int x, int y, int z, int eventType,
+				Object data) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.blockEventHook(x, y, z, eventType, data);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		@Override
+		public void attackHook(Object attackerEnt, Object victimEnt) {
+			// TODO 自動生成されたメソッド・スタブ
+			for (ModBase mb : mods.keySet()) {
+				try {
+					mb.attackHook(attackerEnt, victimEnt);
+				} catch (Throwable ex) {
+					try {
+						StringWriter sw = new StringWriter();
+						ex.printStackTrace(new PrintWriter(sw));
+						BufferedReader br = new BufferedReader(
+								new StringReader(sw.toString()));
+						while (true) {
+							String s = br.readLine();
+							if (s != null)
+								writeLog(MainManager.this, s);
+						}
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+	};
+
 }
