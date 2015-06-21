@@ -7,7 +7,7 @@ var io = java.io;
 var lang = java.lang;
 var mainDex = "";
 var dxTool = "";
-var mainManager, dxClass,hookObserver;
+var mainManager, dxClass, hookObserver;
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 {
     //CLASSLOADER AREA
