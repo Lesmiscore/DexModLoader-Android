@@ -25,7 +25,7 @@ var io = java.io;
 var lang = java.lang;
 var mainDex = "";
 var dxTool = "";
-var mainManager, dxClass;
+var mainManager, dxClass,hookObserver;
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 {
     //CLASSLOADER AREA
@@ -77,7 +77,10 @@ var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
     dxClass = dxc.loadClass("com.android.dx.command.Main");
     //CLASSLOADER AREA END
 }
-mainManager.loadCode();
+{
+    mainManager.loadCode();
+    hookObserver = mainManager.getModHooksObserver();
+}
 
 //Hooks Observer
 function useItem(x, y, z, itemId, blockId, side, itemDamage, blockDamage) {
