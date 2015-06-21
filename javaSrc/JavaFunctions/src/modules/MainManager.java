@@ -56,10 +56,48 @@ public final class MainManager {
 
 	private static void writeLog(MainManager mm, String text) {
 		synchronized (log) {
-			log.write("[" + Integer.toHexString(mm.hashCode()) + "]");
-			log.write("[" + time() + "]");
-			log.write(text);
-			log.write("\n");
+			writeLog0(mm, text);
+		}
+	}
+
+	private static void writeLog0(MainManager mm, String text) {
+		log.write("[" + Integer.toHexString(mm.hashCode()) + "]");
+		log.write("[" + time() + "]");
+		log.write(text);
+		log.write("\n");
+	}
+
+	private static void writeLogMultiLine(MainManager mm, String text) {
+		try {
+			synchronized (log) {
+				writeLogMultiLine0(mm, text);
+			}
+		} catch (IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+	}
+
+	private static void writeLogMultiLine0(MainManager mm, String text)
+			throws IOException {
+		BufferedReader br = new BufferedReader(new StringReader(text));
+		while (true) {
+			String s = br.readLine();
+			if (s != null)
+				writeLog0(mm, s);
+		}
+	}
+
+	private static void writeLogThrowable(MainManager mm, Throwable ex) {
+		synchronized (log) {
+			try {
+				StringWriter sw = new StringWriter();
+				ex.printStackTrace(new PrintWriter(sw));
+				writeLogMultiLine0(mm, sw.toString());
+			} catch (IOException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -169,20 +207,7 @@ public final class MainManager {
 					mb.useItem(x, y, z, itemId, blockId, side, itemDamage,
 							blockDamage);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -194,20 +219,7 @@ public final class MainManager {
 				try {
 					mb.startDestroyBlock(x, y, z, side);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -219,20 +231,7 @@ public final class MainManager {
 				try {
 					mb.serverMessageReceiveHook(text);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -244,20 +243,7 @@ public final class MainManager {
 				try {
 					mb.selectLevelHook();
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -269,20 +255,7 @@ public final class MainManager {
 				try {
 					mb.procCmd(text);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -294,20 +267,7 @@ public final class MainManager {
 				try {
 					mb.newLevel(isLocal);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -333,8 +293,7 @@ public final class MainManager {
 										writeLog(MainManager.this, s);
 								}
 							} catch (IOException e) {
-								// TODO 自動生成された catch ブロック
-								e.printStackTrace();
+								writeLogThrowable(MainManager.this, ex);
 							}
 						}
 					}.start();
@@ -350,20 +309,7 @@ public final class MainManager {
 				try {
 					mb.levelEventHook(entity, eventType, x, y, z, data);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -375,20 +321,7 @@ public final class MainManager {
 				try {
 					mb.leaveGame();
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -400,20 +333,7 @@ public final class MainManager {
 				try {
 					mb.entityRemovedHook(entity);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -425,20 +345,7 @@ public final class MainManager {
 				try {
 					mb.entityAddedHook(entity);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -450,20 +357,7 @@ public final class MainManager {
 				try {
 					mb.destroyBlock(x, y, z, side);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -475,20 +369,7 @@ public final class MainManager {
 				try {
 					mb.deathHook(murdererEnt, victimEnt);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -500,20 +381,7 @@ public final class MainManager {
 				try {
 					mb.chatReceiveHook(senderEnt, message);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -526,20 +394,7 @@ public final class MainManager {
 				try {
 					mb.blockEventHook(x, y, z, eventType, data);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
@@ -551,20 +406,7 @@ public final class MainManager {
 				try {
 					mb.attackHook(attackerEnt, victimEnt);
 				} catch (Throwable ex) {
-					try {
-						StringWriter sw = new StringWriter();
-						ex.printStackTrace(new PrintWriter(sw));
-						BufferedReader br = new BufferedReader(
-								new StringReader(sw.toString()));
-						while (true) {
-							String s = br.readLine();
-							if (s != null)
-								writeLog(MainManager.this, s);
-						}
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
+					writeLogThrowable(MainManager.this, ex);
 				}
 			}
 		}
