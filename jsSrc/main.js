@@ -77,7 +77,7 @@ var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
     dxClass = dxc.loadClass("com.android.dx.command.Main");
     //CLASSLOADER AREA END
 }
-mainManager.loadNow();
+mainManager.loadCode();
 
 //Hooks Observer
 function useItem(x, y, z, itemId, blockId, side, itemDamage, blockDamage) {
