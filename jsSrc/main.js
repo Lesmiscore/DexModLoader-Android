@@ -277,65 +277,65 @@ var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
 //Hooks Observer
 function useItem(x, y, z, itemId, blockId, side, itemDamage, blockDamage) {
-
+    hookObserver.useItem(x, y, z, itemId, blockId, side, itemDamage, blockDamage);
 }
 
 function destroyBlock(x, y, z, side) {
-
+    hookObserver.destroyBlock(x, y, z, side);
 }
 
 function startDestroyBlock(x, y, z, side) {
-
+    hookObserver.startDestroyBlock(x, y, z, side);
 }
 
 function newLevel(hasLevel) {
-
+    hookObserver.newLevel(hasLevel);
 }
 
 function selectLevelHook() {
-
+    hookObserver.selectLevelHook();
 }
 
 function leaveGame() {
-
+    hookObserver.leaveGame();
 }
 
 function attackHook(attacker, victim) {
-
+    hookObserver.attackHook(attacker, victim);
 }
 
 function modTick() {
-
+    hookObserver.modTick();
 }
 
 function procCmd(command) {
-
+    hookObserver.procCmd(command);
 }
 
 function deathHook(murderer, victim) {
-
+    hookObserver.deathHook(murderer, victim);
 }
 
 function entityRemovedHook(entity) {
-
+    hookObserver.entityRemovedHook(entity);
 }
 
 function entityAddedHook(entity) {
-
+    hookObserver.entityAddedHook(entity);
 }
 
 function levelEventHook(entity, eventType, x, y, z, data) {
-
+    hookObserver.levelEventHook(entity, eventType, x, y, z, data);
 }
 
 function blockEventHook(x, y, z, eventType, data) {
-
+    hookObserver.levelEventHook(entity, eventType, x, y, z, data);
 }
 
 function serverMessageReceiveHook(message) {
-
+    hookObserver.serverMessageReceiveHook(message);
 }
 
 function chatReceiveHook(sender, message) {
-
+    hookObserver.chatReceiveHook(sender, message);
 }
