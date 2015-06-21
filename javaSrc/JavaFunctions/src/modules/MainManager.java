@@ -196,7 +196,7 @@ public final class MainManager {
 		return observerHooks;
 	}
 
-	ModHooks observerHooks = new ModHooks() {
+	private ModHooks observerHooks = new ModHooks() {
 
 		@Override
 		public void useItem(int x, int y, int z, short itemId, short blockId,
