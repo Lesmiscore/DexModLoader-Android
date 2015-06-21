@@ -196,6 +196,14 @@ public final class MainManager {
 		return observerHooks;
 	}
 
+	public void registerMethod1(String name, Function method) {
+		registerMethod(name, method);
+	}
+
+	public Object callMethod1(String name, Object[] args) {
+		return callMethod(name, args);
+	}
+
 	private ModHooks observerHooks = new ModHooks() {
 
 		@Override
