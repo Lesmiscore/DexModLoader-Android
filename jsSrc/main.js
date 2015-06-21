@@ -62,7 +62,7 @@ var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 {
     mainManager.loadCode();
     hookObserver = mainManager.getModHooksObserver();
-    var regMethod = mainManager.registerMethod;
+    var regMethod = mainManager.registerMethod1;
 
     regMethod("addItemInventory", addItemInventory);
     regMethod("clientMessgae", clientMessgae);
