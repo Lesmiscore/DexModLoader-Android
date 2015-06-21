@@ -1,24 +1,6 @@
 /* Java Mods Loader for BlockLauncher(Android)
  * Created by nao20010128nao.
  * DO NOT REDISTRIBUTE!
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  */
 //Code Loader
 var io = java.io;
