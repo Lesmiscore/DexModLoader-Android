@@ -7,6 +7,7 @@ import modules.MainManager;
 public final class ModMethods {
 	MainManager mm;
 	public ModPEObject ModPE = new ModPEObject();
+	public LevelObject Level = new LevelObject();
 
 	public ModMethods(MainManager mm) {
 		this.mm = mm;
