@@ -207,68 +207,117 @@ public final class ModMethods {
 	}
 
 	public class LevelObject {
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void addParticle(int type, double startX, double startY,
+				double startZ, double directionX, double directionY,
+				double directionZ, int size) {
+			mm.callMethod1("Level.addParticle", new Object[] { type, startX,
+					startY, startZ, directionX, directionY, directionZ, size });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void biomeIdToName(int id) {
+			mm.callMethod1("Level.biomeIdToName", new Object[] { id });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void destroyBlock(int x, int y, int z, boolean drop) {
+			mm.callMethod1("Level.destroyBlock", new Object[] { x, y, z, drop });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void dropItem(double x, double y, double z, double bounceHeight,
+				int id, int amount, int damage) {
+			mm.callMethod1("Level.dropItem", new Object[] { x, y, z,
+					bounceHeight, id, amount, damage });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void explode(int x, int y, int z, int explodeRadius) {
+			mm.callMethod1("Level.explode", new Object[] { x, y, z,
+					explodeRadius });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public String getAddress() {
+			return (String) mm.callMethod1("Level.getAddress", new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public int getBiome(int x, int z) {
+			return (int) mm
+					.callMethod1("Level.getBiome", new Object[] { x, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public String getBiomeName(int x, int z) {
+			return (String) mm.callMethod1("Level.getBiomeName", new Object[] {
+					x, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public int getBrightness(int x, int y, int z) {
+			return (int) mm.callMethod1("Level.getBrightness", new Object[] {
+					x, y, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public int getChestSlot(int x, int y, int z, int slotId) {
+			return (int) mm.callMethod1("Level.getChestSlot", new Object[] { x,
+					y, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public int getChestSlotCount(int x, int y, int z, int slotId) {
+			return (int) mm.callMethod1("Level.getChestSlotCount",
+					new Object[] { x, y, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public int getChestSlotData(int x, int y, int z, int slotId) {
+			return (int) mm.callMethod1("Level.getChestSlotData", new Object[] {
+					x, y, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public int getData(int x, int y, int z) {
+			return (int) mm.callMethod1("Level.getData",
+					new Object[] { x, y, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public int getFurnaceSlot(int x, int y, int z, int slotId) {
+			return (int) mm.callMethod1("Level.getFurnaceSlot", new Object[] {
+					x, y, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public int getFurnaceSlotCount(int x, int y, int z, int slotId) {
+			return (int) mm.callMethod1("Level.getFurnaceSlotCount",
+					new Object[] { x, y, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public int getFurnaceSlotData(int x, int y, int z, int slotId) {
+			return (int) mm.callMethod1("Level.getFurnaceSlotData",
+					new Object[] { x, y, z });
+		}
+
+		public int getGameMode() {
+			return (int) mm.callMethod1("Level.getGameMode", new Object[] {});
+		}
+
+		public int getGrassColor(int x, int z) {
+			return (int) mm.callMethod1("Level.getGrassColor", new Object[] {
+					x, z });
+		}
+
+		public String getSignText(int x, int y, int z, int line) {
+			return (String) mm.callMethod1("Level.getSignText", new Object[] {
+					x, y, z, line });
+		}
+
+		public int getTile(int x, int y, int z) {
+			return (int) mm.callMethod1("Level.dumpVtable", new Object[] { x,
+					y, z });
+		}
+
+		public int getTime() {
+			return (int) mm.callMethod1("Level.getTime", new Object[] {});
+		}
+
+		public String getWorldDir() {
+			return (String) mm
+					.callMethod1("Level.getWorldDir", new Object[] {});
+		}
+
+		public String getWorldName() {
+			return (String) mm.callMethod1("Level.getWorldName",
+					new Object[] {});
 		}
 
 		public void dumpVtable(String s) {
