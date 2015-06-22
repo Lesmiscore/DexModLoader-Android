@@ -181,7 +181,7 @@ public final class ModMethods {
 
 		public void setItem(short id, String textureName, String group,
 				int healthRegen, String itemName, int stackLimit) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { id, textureName,
+			mm.callMethod1("ModPE.setItem", new Object[] { id, textureName,
 					group, healthRegen, itemName, stackLimit });
 		}
 
@@ -208,311 +208,311 @@ public final class ModMethods {
 
 	public class LevelObject {
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("ModPE.dumpVtable", new Object[] { s });
+			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
 	}
 }
