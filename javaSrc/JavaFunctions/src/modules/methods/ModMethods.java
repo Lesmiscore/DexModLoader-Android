@@ -320,50 +320,82 @@ public final class ModMethods {
 					new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void playSound(int x, int y, int z, String soundName,
+				int volume, double pitch) {
+			mm.callMethod1("Level.playSound", new Object[] { x, y, z,
+					soundName, volume, pitch });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void playSoundEnt(Object entity, int x, int y, int z,
+				String soundName, int volume, double pitch) {
+			mm.callMethod1("Level.playSoundEnt", new Object[] { entity, x, y,
+					z, soundName, volume, pitch });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void setChestSlot(int x, int y, int z, int slot, int id,
+				int damage, int amount) {
+			mm.callMethod1("Level.setChestSlot", new Object[] { x, y, z, slot,
+					id, damage, amount });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void setFurnaceSlot(int x, int y, int z, int slot, int id,
+				int damage, int amount) {
+			mm.callMethod1("Level.setFurnaceSlot", new Object[] { x, y, z,
+					slot, id, damage, amount });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void setGameMode(int gm) {
+			mm.callMethod1("Level.setGameMode", new Object[] { gm });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void setGrassColor(int x, int z, int color) {
+			mm.callMethod1("Level.setGrassColor", new Object[] { x, z, color });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void setNightMode(boolean value) {
+			mm.callMethod1("Level.setNightMode", new Object[] { value });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void setSignText(int x, int y, int z, int line, String text) {
+			mm.callMethod1("Level.setSignText", new Object[] { x, y, z, line,
+					text });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void setSpawn(int x, int y, int z) {
+			mm.callMethod1("Level.setSpawn", new Object[] { x, y, z });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void setSpawnerEntityType(int x, int y, int z, int entId) {
+			mm.callMethod1("Level.setSpawnerEntityType", new Object[] { x, y,
+					z, entId });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Level.dumpVtable", new Object[] { s });
+		public void setTile(int x, int y, int z, int id, int damage) {
+			mm.callMethod1("Level.setTile",
+					new Object[] { x, y, z, id, damage });
 		}
 
+		public void setTime(int time) {
+			mm.callMethod1("Level.setTime", new Object[] { time });
+		}
+
+		public void spawnChicken(double x, double y, double z, String skinUrl) {
+			mm.callMethod1("Level.spawnChicken", new Object[] { x, y, z,
+					skinUrl });
+		}
+
+		public void spawnCow(double x, double y, double z, String skinUrl) {
+			mm.callMethod1("Level.spawnCow", new Object[] { x, y, z, skinUrl });
+		}
+
+		public void spawnMob(double x, double y, double z, int entTypeId,
+				String skinUrl) {
+			mm.callMethod1("Level.spawnMob", new Object[] { x, y, z, entTypeId,
+					skinUrl });
+		}
+	}
+
+	public class PlayerObject {
 		public void dumpVtable(String s) {
 			mm.callMethod1("Level.dumpVtable", new Object[] { s });
 		}
