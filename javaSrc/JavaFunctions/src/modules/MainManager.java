@@ -67,7 +67,7 @@ public final class MainManager {
 		log.write("\n");
 	}
 
-	private static void writeLogMultiLine(MainManager mm, String text) {
+	public static void writeLogMultiLine(MainManager mm, String text) {
 		try {
 			synchronized (log) {
 				writeLogMultiLine0(mm, text);
@@ -419,5 +419,4 @@ public final class MainManager {
 			}
 		}
 	};
-
 }
