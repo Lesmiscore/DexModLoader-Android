@@ -113,6 +113,5 @@ public abstract class ModBase implements ModHooks {
 	public void chatReceiveHook(Object senderEnt, String message) {
 		// TODO 自動生成されたメソッド・スタブ
 
-	};
-
+	}
 }
