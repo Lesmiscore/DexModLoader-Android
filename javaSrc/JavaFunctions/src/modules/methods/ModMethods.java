@@ -397,16 +397,32 @@ public final class ModMethods {
 	}
 
 	public class PlayerObject {
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public void addItemCreativeInv(int id, int amount, int damage) {
+			mm.callMethod1("Player.addItemCreativeInv", new Object[] { id,
+					amount, damage });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public void addItemInventory(int id, int amount, int damage) {
+			mm.callMethod1("Player.addItemInventory", new Object[] { id,
+					amount, damage });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public boolean canFly() {
+			return (boolean) mm.callMethod1("Player.canFly", new Object[] {});
+		}
+
+		public void clearInventorySlot(int slot) {
+			mm.callMethod1("Player.clearInventorySlot", new Object[] { slot });
+		}
+
+		public int getArmorSlot(int slot) {
+			return (int) mm.callMethod1("Player.getArmorSlot",
+					new Object[] { slot });
+		}
+
+		public int getArmorSlotDamage(int slot) {
+			return (int) mm.callMethod1("Player.getArmorSlotDamage",
+					new Object[] { slot });
 		}
 
 		public void dumpVtable(String s) {
