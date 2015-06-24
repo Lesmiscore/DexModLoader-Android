@@ -25,7 +25,7 @@ public abstract class ModBase implements ModHooks {
 		return mm;
 	}
 
-	public Context getAndroidContext() {
+	public Context getContext() {
 		return androidContext;
 	}
 

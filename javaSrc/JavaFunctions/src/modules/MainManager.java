@@ -11,9 +11,11 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -85,6 +87,8 @@ public final class MainManager {
 			String s = br.readLine();
 			if (s != null)
 				writeLog0(mm, s);
+			else
+				break;
 		}
 	}
 
@@ -108,9 +112,11 @@ public final class MainManager {
 
 	File modDir;
 	Context context;
-	Map<ModBase, Boolean> mods = new HashMap<>();
+	Set<ModBase> mods = new HashSet<>();
+	List<ModBase> allMods = new ArrayList<>();
 	Set<ClassLoader> classLoaders = new HashSet<>();
 	Set<Class<?>> classes = new HashSet<>();
+	ModEnablingList enableList;
 	protected ModMethods methods = new ModMethods(this);
 
 	public MainManager(Context c) {
@@ -120,6 +126,7 @@ public final class MainManager {
 	public MainManager(Context c, File modDir) {
 		this.context = c;
 		this.modDir = modDir;
+		this.enableList = ModEnablingList.importFrom(c);
 	}
 
 	public void loadCode() {
@@ -163,15 +170,21 @@ public final class MainManager {
 							MainManager.class, Context.class).newInstance(this,
 							context);
 					writeLog(this, "Loaded mod:" + mod.getModInfo().getName());
-					writeLog(this, "Enabling mod:" + mod.getModInfo().getName());
-					mod.onEnable();
-					writeLog(this, "Enabled mod:" + mod.getModInfo().getName());
-					mods.put(mod, true);
+					if (enableList.get(mod.getModInfo().getName())) {
+						writeLog(this, "Enabling mod:"
+								+ mod.getModInfo().getName());
+						allMods.add(mod);
+						if (enableMod(mod.getModInfo().getName(), false))
+							writeLog(this, "Enabled mod:"
+									+ mod.getModInfo().getName());
+						else
+							writeLog(this, "Failed to enable");
+					}
 				} catch (Throwable ex) {
-
+					writeLogThrowable(this, ex);
 				}
 			} catch (Throwable ex) {
-
+				writeLogThrowable(this, ex);
 			}
 		}
 	}
@@ -204,13 +217,110 @@ public final class MainManager {
 		return callMethod(name, args);
 	}
 
+	public boolean enableMod(String modName, boolean throwException) {
+		boolean result = enableMod0(modName, throwException);
+		enableList.put(modName, result);
+		return result;
+	}
+
+	private boolean enableMod0(String modName, boolean throwException) {
+		writeLog(this, "Starting enabling:" + modName);
+		ModBase needEnable = null;
+		for (ModBase mb : allMods) {
+			if (mb.getModInfo().getName().equals(modName)) {
+				if (needEnable != null)
+					needEnable = mb;
+				else if (throwException)
+					throw new InternalError("Found more than two \"" + modName
+							+ "\" mod. Are mods same?");
+				else
+					return false;
+			}
+		}
+		if (needEnable == null) {
+			// nothing to enable, so return false.
+			return false;
+		}
+		if (mods.contains(needEnable)) {
+			// the mod has already enabled, so don't enable again and return
+			// true.
+			return true;
+		}
+		try {
+			needEnable.onEnable();
+			mods.add(needEnable);
+			writeLog(this, modName + " has enabled completely!");
+			return true;
+		} catch (Throwable ex) {
+			writeLogThrowable(this, ex);
+			// error in enabling
+			if (throwException)
+				throw new Error("An error occured while enabling", ex);
+			else
+				return false;
+		}
+	}
+
+	public boolean disableMod(String modName, boolean throwException) {
+		boolean result = disableMod0(modName, throwException);
+		enableList.put(modName, false);
+		return result;
+	}
+
+	private boolean disableMod0(String modName, boolean throwException) {
+		writeLog(this, "Starting disabling:" + modName);
+		ModBase needDisable = null;
+		for (ModBase mb : allMods) {
+			if (mb.getModInfo().getName().equals(modName)) {
+				if (needDisable != null)
+					needDisable = mb;
+				else if (throwException)
+					throw new InternalError("Found more than two \"" + modName
+							+ "\" mod. Are mods same?");
+				else
+					return false;
+			}
+		}
+		if (needDisable == null) {
+			// nothing to disable, so return false.
+			return false;
+		}
+		if (!mods.contains(needDisable)) {
+			// the mod has already disabled, so don't disable again and return
+			// true.
+			return true;
+		}
+		try {
+			needDisable.onDisable();
+			mods.remove(needDisable);
+			writeLog(this, modName + " has disabled completely!");
+			return true;
+		} catch (Throwable ex) {
+			writeLogThrowable(this, ex);
+			// error in enabling
+			if (throwException)
+				throw new Error("An error occured while disabling", ex);
+			else
+				return false;
+		}
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO 自動生成されたメソッド・スタブ
+		super.finalize();
+		for (ModBase mb : mods) {
+			disableMod0(mb.getModInfo().getName(), false);
+		}
+	}
+
 	private ModHooks observerHooks = new ModHooks() {
 
 		@Override
 		public void useItem(int x, int y, int z, short itemId, short blockId,
 				byte side, short itemDamage, short blockDamage) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.useItem(x, y, z, itemId, blockId, side, itemDamage,
 							blockDamage);
@@ -223,7 +333,7 @@ public final class MainManager {
 		@Override
 		public void startDestroyBlock(int x, int y, int z, byte side) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.startDestroyBlock(x, y, z, side);
 				} catch (Throwable ex) {
@@ -235,7 +345,7 @@ public final class MainManager {
 		@Override
 		public void serverMessageReceiveHook(String text) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.serverMessageReceiveHook(text);
 				} catch (Throwable ex) {
@@ -247,7 +357,7 @@ public final class MainManager {
 		@Override
 		public void selectLevelHook() {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.selectLevelHook();
 				} catch (Throwable ex) {
@@ -259,7 +369,7 @@ public final class MainManager {
 		@Override
 		public void procCmd(String text) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.procCmd(text);
 				} catch (Throwable ex) {
@@ -271,7 +381,7 @@ public final class MainManager {
 		@Override
 		public void newLevel(boolean isLocal) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.newLevel(isLocal);
 				} catch (Throwable ex) {
@@ -283,7 +393,7 @@ public final class MainManager {
 		@Override
 		public void modTick() {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.modTick();
 				} catch (final Throwable ex) {
@@ -313,7 +423,7 @@ public final class MainManager {
 		public void levelEventHook(Object entity, int eventType, int x, int y,
 				int z, Object data) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.levelEventHook(entity, eventType, x, y, z, data);
 				} catch (Throwable ex) {
@@ -325,7 +435,7 @@ public final class MainManager {
 		@Override
 		public void leaveGame() {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.leaveGame();
 				} catch (Throwable ex) {
@@ -337,7 +447,7 @@ public final class MainManager {
 		@Override
 		public void entityRemovedHook(Object entity) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.entityRemovedHook(entity);
 				} catch (Throwable ex) {
@@ -349,7 +459,7 @@ public final class MainManager {
 		@Override
 		public void entityAddedHook(Object entity) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.entityAddedHook(entity);
 				} catch (Throwable ex) {
@@ -361,7 +471,7 @@ public final class MainManager {
 		@Override
 		public void destroyBlock(int x, int y, int z, byte side) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.destroyBlock(x, y, z, side);
 				} catch (Throwable ex) {
@@ -373,7 +483,7 @@ public final class MainManager {
 		@Override
 		public void deathHook(Object murdererEnt, Object victimEnt) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.deathHook(murdererEnt, victimEnt);
 				} catch (Throwable ex) {
@@ -385,7 +495,7 @@ public final class MainManager {
 		@Override
 		public void chatReceiveHook(Object senderEnt, String message) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.chatReceiveHook(senderEnt, message);
 				} catch (Throwable ex) {
@@ -398,7 +508,7 @@ public final class MainManager {
 		public void blockEventHook(int x, int y, int z, int eventType,
 				Object data) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.blockEventHook(x, y, z, eventType, data);
 				} catch (Throwable ex) {
@@ -410,7 +520,7 @@ public final class MainManager {
 		@Override
 		public void attackHook(Object attackerEnt, Object victimEnt) {
 			// TODO 自動生成されたメソッド・スタブ
-			for (ModBase mb : mods.keySet()) {
+			for (ModBase mb : mods) {
 				try {
 					mb.attackHook(attackerEnt, victimEnt);
 				} catch (Throwable ex) {

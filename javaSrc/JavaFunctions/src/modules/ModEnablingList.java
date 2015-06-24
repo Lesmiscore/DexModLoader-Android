@@ -117,4 +117,15 @@ public class ModEnablingList extends HashMap<String, Boolean> {
 						Base64.encodeToString(serialize(), Base64.NO_WRAP))
 				.commit();
 	}
+
+	@Override
+	public Boolean get(Object key) {
+		// TODO 自動生成されたメソッド・スタブ
+		if (super.containsKey(key)) {
+			return super.get(key);
+		} else {
+			super.put((String) key, false);
+			return false;
+		}
+	}
 }
