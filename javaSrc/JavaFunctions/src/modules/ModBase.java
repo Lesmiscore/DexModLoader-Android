@@ -1,14 +1,18 @@
 package modules;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 public abstract class ModBase implements ModHooks {
 	MainManager mm;
 	Context androidContext;
+	SharedPreferences config;
 
 	protected ModBase(MainManager mainManager, Context ctx) {
 		this.mm = mainManager;
 		this.androidContext = ctx;
+		this.config = ctx.getSharedPreferences("javaModLoader-Config-"
+				+ getModInfo().getName(), 755);
 	}
 
 	public abstract ModInfo getModInfo();
@@ -16,6 +20,18 @@ public abstract class ModBase implements ModHooks {
 	public abstract void onEnable();
 
 	public abstract void onDisable();
+
+	public MainManager getMainManager() {
+		return mm;
+	}
+
+	public Context getAndroidContext() {
+		return androidContext;
+	}
+
+	public SharedPreferences getConfig() {
+		return config;
+	}
 
 	@Override
 	public void useItem(int x, int y, int z, short itemId, short blockId,
