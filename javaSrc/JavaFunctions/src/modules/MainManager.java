@@ -312,6 +312,7 @@ public final class MainManager {
 		for (ModBase mb : mods) {
 			disableMod0(mb.getModInfo().getName(), false);
 		}
+		enableList.exportTo(context);
 	}
 
 	private ModHooks observerHooks = new ModHooks() {
