@@ -1,5 +1,6 @@
 package modules.consistants;
 
+
 public final class EffectID {
 	private EffectID() {
 		// TODO 自動生成されたコンストラクター・スタブ
