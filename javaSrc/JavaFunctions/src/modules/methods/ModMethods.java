@@ -425,32 +425,82 @@ public final class ModMethods {
 					new Object[] { slot });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public int getCarriedItem() {
+			return (int) mm.callMethod1("Player.getCarriedItem",
+					new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public int getCarriedItemCount() {
+			return (int) mm.callMethod1("Player.getCarriedItemCount",
+					new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public int getCarriedItemData() {
+			return (int) mm.callMethod1("Player.getCarriedItemData",
+					new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public Object getEntity() {
+			return mm.callMethod1("Player.getEntity", new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public int getInventorySlot(int slot) {
+			return (int) mm.callMethod1("Player.getInventorySlot",
+					new Object[] { slot });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public int getInventorySlotCount(int slot) {
+			return (int) mm.callMethod1("Player.getInventorySlotCount",
+					new Object[] { slot });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public int getInventorySlotData(int slot) {
+			return (int) mm.callMethod1("Player.getInventorySlotData",
+					new Object[] { slot });
+		}
+
+		public String getName(Object s) {
+			return (String) mm
+					.callMethod1("Player.getName", new Object[] { s });
+		}
+
+		public int getPointedBlockData() {
+			return (int) mm.callMethod1("Player.getPointedBlockData",
+					new Object[] {});
+		}
+
+		public int getPointedBlockId() {
+			return (int) mm.callMethod1("Player.getPointedBlockId",
+					new Object[] {});
+		}
+
+		public int getPointedBlockSide() {
+			return (int) mm.callMethod1("Player.getPointedBlockSide",
+					new Object[] {});
+		}
+
+		public int getPointedBlockX() {
+			return (int) mm.callMethod1("Player.getPointedBlockX",
+					new Object[] {});
+		}
+
+		public int getPointedBlockY() {
+			return (int) mm.callMethod1("Player.getPointedBlockY",
+					new Object[] {});
+		}
+
+		public int getPointedBlockZ() {
+			return (int) mm.callMethod1("Player.getPointedBlockZ",
+					new Object[] {});
+		}
+
+		public Object getPointedEntity() {
+			return mm.callMethod1("Player.getPointedEntity", new Object[] {});
+		}
+
+		public int getSelectedSlotId() {
+			return (int) mm.callMethod1("Player.getSelectedSlotId",
+					new Object[] {});
 		}
 
 		public void dumpVtable(String s) {
