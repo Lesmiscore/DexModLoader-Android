@@ -751,15 +751,19 @@ public final class ModMethods {
 	public class ItemObject {
 		public void addCraftRecipe(int id, int amount, int damage,
 				Object[] recipe) {
-			mm.callMethod1("Item.addCraftRecipe", new Object[] { s });
+			mm.callMethod1("Item.addCraftRecipe", new Object[] { id, amount,
+					damage, recipe });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Item.dumpVtable", new Object[] { s });
+		public void addFurnaceRecipe(int material, int result, int damage) {
+			mm.callMethod1("Item.addFurnaceRecipe", new Object[] { material,
+					result, damage });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Item.dumpVtable", new Object[] { s });
+		public void addShapedRecipe(int id, int amount, int damage,
+				String[] materialPlace, Object[] matrialInfo) {
+			mm.callMethod1("Item.addShapedRecipe", new Object[] { id, amount,
+					damage, materialPlace, matrialInfo });
 		}
 
 		public void dumpVtable(String s) {
