@@ -9,6 +9,7 @@ public final class ModMethods {
 	public ModPEObject ModPE = new ModPEObject();
 	public LevelObject Level = new LevelObject();
 	public PlayerObject Player = new PlayerObject();
+	public EntityObject Entity = new EntityObject();
 
 	public ModMethods(MainManager mm) {
 		this.mm = mm;
@@ -554,216 +555,403 @@ public final class ModMethods {
 					effectTime, effectLevel, ambient, showParticles });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+		public Object[] getAll() {
+			return (Object[]) mm.callMethod1("Entity.getAll", new Object[] {});
+		}
+
+		public int getAnimalAge(Object entity) {
+			return (int) mm.callMethod1("Entity.getAnimalAge",
+					new Object[] { entity });
+		}
+
+		public int getEntityTypeId(Object entity) {
+			return (int) mm.callMethod1("Entity.getEntityTypeId",
+					new Object[] { entity });
+		}
+
+		public int getHealth(Object entity) {
+			return (int) mm.callMethod1("Entity.getHealth",
+					new Object[] { entity });
+		}
+
+		public int getItemEntityCount(Object entity) {
+			return (int) mm.callMethod1("Entity.getItemEntityCount",
+					new Object[] { entity });
+		}
+
+		public int getItemEntityData(Object entity) {
+			return (int) mm.callMethod1("Entity.getItemEntityData",
+					new Object[] { entity });
+		}
+
+		public int getItemEntityId(Object entity) {
+			return (int) mm.callMethod1("Entity.getItemEntityId",
+					new Object[] { entity });
+		}
+
+		public String getMobSkin(Object entity) {
+			return (String) mm.callMethod1("Entity.getMobSkin",
+					new Object[] { entity });
+		}
+
+		public String getNameTag(Object entity) {
+			return (String) mm.callMethod1("Entity.getNameTag",
+					new Object[] { entity });
+		}
+
+		public double getPitch(Object entity) {
+			return (double) mm.callMethod1("Entity.getPitch",
+					new Object[] { entity });
+		}
+
+		public int getRenderType(Object entity) {
+			return (int) mm.callMethod1("Entity.getRenderType",
+					new Object[] { entity });
+		}
+
+		public Object getRider(Object entity) {
+			return mm.callMethod1("Entity.getRider", new Object[] { entity });
+		}
+
+		public Object getRiding(Object entity) {
+			return mm.callMethod1("Entity.getRiding", new Object[] { entity });
+		}
+
+		public double getVelX(Object entity) {
+			return (double) mm.callMethod1("Entity.getVelX",
+					new Object[] { entity });
+		}
+
+		public double getVelY(Object entity) {
+			return (double) mm.callMethod1("Entity.getVelY",
+					new Object[] { entity });
+		}
+
+		public double getVelZ(Object entity) {
+			return (double) mm.callMethod1("Entity.getVelZ",
+					new Object[] { entity });
+		}
+
+		public double getX(Object entity) {
+			return (double) mm.callMethod1("Entity.getX",
+					new Object[] { entity });
+		}
+
+		public double getY(Object entity) {
+			return (double) mm.callMethod1("Entity.getY",
+					new Object[] { entity });
+		}
+
+		public double getZ(Object entity) {
+			return (double) mm.callMethod1("Entity.getZ",
+					new Object[] { entity });
+		}
+
+		public double getYaw(Object entity) {
+			return (double) mm.callMethod1("Entity.getYaw",
+					new Object[] { entity });
+		}
+
+		public void removeAllEffects(Object entity) {
+			mm.callMethod1("Entity.remove", new Object[] { entity });
+		}
+
+		public void removeEffect(Object entity, int effectId) {
+			mm.callMethod1("Entity.remove", new Object[] { entity, effectId });
+		}
+
+		public void remove(Object entity) {
+			mm.callMethod1("Entity.remove", new Object[] { entity });
+		}
+
+		public void rideAnimal(Object rider, Object ridden) {
+			mm.callMethod1("Entity.rideAnimal", new Object[] { rider, ridden });
+		}
+
+		public void setAnimalAge(Object entity, int age) {
+			mm.callMethod1("Entity.setAnimalAge", new Object[] { entity, age });
+		}
+
+		public void setCape(Object entity, String address) {
+			mm.callMethod1("Entity.setCape", new Object[] { entity, address });
+		}
+
+		public void setCarriedItem(Object entity, int id, int amount, int damage) {
+			mm.callMethod1("Entity.setCarriedItem", new Object[] { entity, id,
+					amount, damage });
+		}
+
+		public void setCollisionSize(Object entity, double xz, double y) {
+			mm.callMethod1("Entity.setCollisionSize", new Object[] { entity,
+					xz, y });
+		}
+
+		public void setFireTicks(Object entity, int time) {
+			mm.callMethod1("Entity.setFireTicks", new Object[] { entity, time });
+		}
+
+		public void setHealth(Object entity, int health) {
+			mm.callMethod1("Entity.setHealth", new Object[] { entity, health });
+		}
+
+		public void setMobSkin(Object entity, String address) {
+			mm.callMethod1("Entity.setMobSkin",
+					new Object[] { entity, address });
+		}
+
+		public void setNameTag(Object entity, String name) {
+			mm.callMethod1("Entity.setNameTag", new Object[] { entity, name });
+		}
+
+		public void setPosition(Object entity, double x, double y, double z) {
+			mm.callMethod1("Entity.setPosition",
+					new Object[] { entity, x, y, z });
+		}
+
+		public void setPositionRelative(Object entity, double x, double y,
+				double z) {
+			mm.callMethod1("Entity.setPositionRelative", new Object[] { entity,
+					x, y, z });
+		}
+
+		public void setRenderType(Object entity, int renderType) {
+			mm.callMethod1("Entity.setRenderType", new Object[] { entity,
+					renderType });
+		}
+
+		public void setRot(Object entity, double horizontal, double vertical) {
+			mm.callMethod1("Entity.setRot", new Object[] { entity, horizontal,
+					vertical });
+		}
+
+		public void setSneaking(Object entity, boolean sneaking) {
+			mm.callMethod1("Entity.setSneaking", new Object[] { entity,
+					sneaking });
+		}
+
+		public void setVelX(Object entity, double speed) {
+			mm.callMethod1("Entity.setVelX", new Object[] { entity, speed });
+		}
+
+		public void setVelY(Object entity, double speed) {
+			mm.callMethod1("Entity.setVelY", new Object[] { entity, speed });
+		}
+
+		public void setVelZ(Object entity, double speed) {
+			mm.callMethod1("Entity.setVelZ", new Object[] { entity, speed });
+		}
+
+		public void spawnMob(double x, double y, double z, int entityId,
+				String skinUrl) {
+			mm.callMethod1("Entity.spawnMob", new Object[] { x, y, z, entityId,
+					skinUrl });
+		}
+	}
+
+	public class ItemObject {
+		public void addCraftRecipe(int id, int amount, int damage,
+				Object[] recipe) {
+			mm.callMethod1("Item.addCraftRecipe", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 
 		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
-		}
-
-		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
-		}
-
-		public void dumpVtable(String s) {
-			mm.callMethod1("Entity.dumpVtable", new Object[] { s });
+			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
 	}
 }
