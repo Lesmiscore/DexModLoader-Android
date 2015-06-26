@@ -8,6 +8,7 @@ public final class ModMethods {
 	MainManager mm;
 	public ModPEObject ModPE = new ModPEObject();
 	public LevelObject Level = new LevelObject();
+	public PlayerObject Player = new PlayerObject();
 
 	public ModMethods(MainManager mm) {
 		this.mm = mm;
@@ -17,8 +18,8 @@ public final class ModMethods {
 		mm.callMethod1("addItemInventory", new Object[] { id, amount, damage });
 	}
 
-	public void clientMessgae(String text) {
-		mm.callMethod1("clientMessgae", new Object[] { text });
+	public void clientMessage(String text) {
+		mm.callMethod1("clientMessage", new Object[] { text });
 	}
 
 	public String getLevel() {
@@ -503,30 +504,50 @@ public final class ModMethods {
 					new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public int getX() {
+			return (int) mm.callMethod1("Player.getX", new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public int getY() {
+			return (int) mm.callMethod1("Player.getY", new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public int getZ() {
+			return (int) mm.callMethod1("Player.getZ", new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public boolean isFlying() {
+			return (boolean) mm.callMethod1("Player.isFlying", new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public boolean isPlayer(Object entity) {
+			return (boolean) mm.callMethod1("Player.isPlayer",
+					new Object[] { entity });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Player.dumpVtable", new Object[] { s });
+		public void setArmorSlot(int slot, int id, int damage) {
+			mm.callMethod1("Player.setArmorSlot", new Object[] { slot, id,
+					damage });
 		}
 
+		public void setCanFly(boolean canFly) {
+			mm.callMethod1("Player.setCanFly", new Object[] { canFly ? 1 : 0 });
+		}
+
+		public void setCanFly(int canFly) {
+			mm.callMethod1("Player.setCanFly", new Object[] { canFly });
+		}
+
+		public void setFlying(boolean flying) {
+			mm.callMethod1("Player.setFlying", new Object[] { flying });
+		}
+
+		public void setHealth(int health) {
+			mm.callMethod1("Player.setHealth", new Object[] { health });
+		}
+	}
+
+	public class EntityObject {
 		public void dumpVtable(String s) {
 			mm.callMethod1("Player.dumpVtable", new Object[] { s });
 		}
