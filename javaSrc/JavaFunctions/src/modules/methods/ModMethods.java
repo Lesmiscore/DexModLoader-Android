@@ -10,6 +10,7 @@ public final class ModMethods {
 	public LevelObject Level = new LevelObject();
 	public PlayerObject Player = new PlayerObject();
 	public EntityObject Entity = new EntityObject();
+	public ItemObject Item = new ItemObject();
 
 	public ModMethods(MainManager mm) {
 		this.mm = mm;
@@ -766,26 +767,42 @@ public final class ModMethods {
 					damage, materialPlace, matrialInfo });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Item.dumpVtable", new Object[] { s });
+		public void defineArmor(int id, String inventoryTextureName, int order,
+				int itemName, String armorTextureName, int defensePower,
+				int maxDamage, int armorTypeId) {
+			mm.callMethod1("Item.defineArmor", new Object[] { id,
+					inventoryTextureName, order, itemName, armorTextureName,
+					defensePower, maxDamage, armorTypeId });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Item.dumpVtable", new Object[] { s });
+		public String getName(int id, int damage, boolean willGet) {
+			return (String) mm.callMethod1("Item.dumpVtable", new Object[] {
+					id, damage, willGet });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Item.dumpVtable", new Object[] { s });
+		public void setCategory(int id, int category, Object whatever) {
+			mm.callMethod1("Item.setCategory", new Object[] { id, category,
+					whatever });
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Item.dumpVtable", new Object[] { s });
+		/**
+		 * Equalent as {@code setCategory(id, category, null);}
+		 * */
+		public void setCategory(int id, int category) {
+			setCategory(id, category, null);
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Item.dumpVtable", new Object[] { s });
+		public void setHandEquipped(int itemId, boolean isGripping) {
+			mm.callMethod1("Item.setHandEquipped", new Object[] { itemId,
+					isGripping });
 		}
 
+		public void setMaxDamage(int itemId, int damage) {
+			mm.callMethod1("Item.setMaxDamage", new Object[] { itemId, damage });
+		}
+	}
+
+	public class BlockObject {
 		public void dumpVtable(String s) {
 			mm.callMethod1("Item.dumpVtable", new Object[] { s });
 		}
