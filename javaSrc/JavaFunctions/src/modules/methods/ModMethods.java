@@ -12,6 +12,7 @@ public final class ModMethods {
 	public EntityObject Entity = new EntityObject();
 	public ItemObject Item = new ItemObject();
 	public BlockObject Block = new BlockObject();
+	public ServerObject Server = new ServerObject();
 
 	public ModMethods(MainManager mm) {
 		this.mm = mm;
