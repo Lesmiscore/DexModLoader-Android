@@ -116,6 +116,9 @@ public final class ModMethods {
 	}
 
 	public class ModPEObject {
+		private ModPEObject() {
+		}
+
 		public void dumpVtable(String s1, String s2) {
 			mm.callMethod1("ModPE.dumpVtable", new Object[] { s1, s2 });
 		}
@@ -213,6 +216,9 @@ public final class ModMethods {
 	}
 
 	public class LevelObject {
+		private LevelObject() {
+		}
+
 		public void addParticle(int type, double startX, double startY,
 				double startZ, double directionX, double directionY,
 				double directionZ, int size) {
@@ -402,6 +408,9 @@ public final class ModMethods {
 	}
 
 	public class PlayerObject {
+		private PlayerObject() {
+		}
+
 		public void addItemCreativeInv(int id, int amount, int damage) {
 			mm.callMethod1("Player.addItemCreativeInv", new Object[] { id,
 					amount, damage });
@@ -552,6 +561,9 @@ public final class ModMethods {
 	}
 
 	public class EntityObject {
+		private EntityObject() {
+		}
+
 		public void addEffect(Object entity, int effectId, int effectTime,
 				int effectLevel, int ambient, boolean showParticles) {
 			mm.callMethod1("Entity.addEffect", new Object[] { entity, effectId,
@@ -752,6 +764,9 @@ public final class ModMethods {
 	}
 
 	public class ItemObject {
+		private ItemObject() {
+		}
+
 		public void addCraftRecipe(int id, int amount, int damage,
 				Object[] recipe) {
 			mm.callMethod1("Item.addCraftRecipe", new Object[] { id, amount,
@@ -805,6 +820,9 @@ public final class ModMethods {
 	}
 
 	public class BlockObject {
+		private BlockObject() {
+		}
+
 		public void defineBlock(int id, String showName,
 				Object[][] textureForSides, int toolMatch, boolean translucent,
 				int[] blockShape) {
@@ -858,6 +876,9 @@ public final class ModMethods {
 	}
 
 	public class ServerObject {
+		private ServerObject() {
+		}
+
 		public String getAddress() {
 			return (String) mm
 					.callMethod1("Server.getAddress", new Object[] {});
