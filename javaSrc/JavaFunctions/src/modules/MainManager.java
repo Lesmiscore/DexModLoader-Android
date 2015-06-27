@@ -145,6 +145,7 @@ public final class MainManager {
 		for (String s : fileStrings) {
 			try {
 				writeLog(this, "Loading file:" + s);
+				s = new File(modDir, s).toString();
 				ClassLoader cl = new DexClassLoader(s, tryGetOptDir(), null,
 						getClass().getClassLoader());
 				classLoaders.add(cl);
