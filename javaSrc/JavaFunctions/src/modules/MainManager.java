@@ -2,6 +2,7 @@ package modules;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,11 +32,22 @@ public final class MainManager {
 	static File mcGames = new File(Environment.getExternalStorageDirectory(),
 			"games/com.mojang");
 	static File jMods = new File(mcGames, "javaMods");
+	static File JMLlog = new File(mcGames, "javaModLoader.log.txt");
 	static Map<String, Function> functions = new HashMap<>();
 	static StringWriter log = new StringWriter();
+	static FileWriter fileLog;
 	static {
 		if (!jMods.exists()) {
 			jMods.mkdir();
+		}
+		fileLog = null;
+		try {
+			if (JMLlog.exists())
+				fileLog = new FileWriter(JMLlog, true);
+			else
+				fileLog = new FileWriter(JMLlog);
+		} catch (Throwable e) {
+
 		}
 	}
 
@@ -63,10 +75,19 @@ public final class MainManager {
 	}
 
 	private static void writeLog0(MainManager mm, String text) {
-		log.write("[" + Integer.toHexString(mm.hashCode()) + "]");
-		log.write("[" + time() + "]");
-		log.write(text);
-		log.write("\n");
+		String toWrite = "";
+		toWrite += "[" + Integer.toHexString(mm.hashCode()) + "]";
+		toWrite += "[" + time() + "]";
+		toWrite += text;
+		toWrite += "\n";
+		log.write(toWrite);
+		try {
+			if (fileLog != null)
+				fileLog.write(toWrite);
+		} catch (IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
 	}
 
 	public static void writeLogMultiLine(MainManager mm, String text) {
@@ -303,6 +324,12 @@ public final class MainManager {
 				throw new Error("An error occured while disabling", ex);
 			else
 				return false;
+		}
+	}
+
+	public String getLog() {
+		synchronized (log) {
+			return log.toString();
 		}
 	}
 
