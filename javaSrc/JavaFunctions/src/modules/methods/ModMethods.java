@@ -867,18 +867,25 @@ public final class ModMethods {
 					new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Server.dumpVtable", new Object[] { s });
+		public Object[] getAllPlayers() {
+			return (String[]) mm.callMethod1("Server.getAllPlayers",
+					new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Server.dumpVtable", new Object[] { s });
+		public short getPort() {
+			return (short) mm.callMethod1("Server.getPort", new Object[] {});
 		}
 
-		public void dumpVtable(String s) {
-			mm.callMethod1("Server.dumpVtable", new Object[] { s });
+		public void joinServer(String host, short port) {
+			mm.callMethod1("Server.joinServer", new Object[] { host, port });
 		}
 
+		public void sendChat(String s) {
+			mm.callMethod1("Server.sendChat", new Object[] { s });
+		}
+	}
+
+	public class ShouldBeDeleted {
 		public void dumpVtable(String s) {
 			mm.callMethod1("Server.dumpVtable", new Object[] { s });
 		}
