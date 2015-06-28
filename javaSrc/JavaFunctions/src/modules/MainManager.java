@@ -113,7 +113,7 @@ public final class MainManager {
 		}
 	}
 
-	private static void writeLogThrowable(MainManager mm, Throwable ex) {
+	public static void writeLogThrowable(MainManager mm, Throwable ex) {
 		synchronized (log) {
 			try {
 				StringWriter sw = new StringWriter();
@@ -148,6 +148,7 @@ public final class MainManager {
 		this.context = c;
 		this.modDir = modDir;
 		this.enableList = ModEnablingList.importFrom(c);
+		HelperMessenger.init(c, this);
 	}
 
 	public void loadCode() {
@@ -239,10 +240,43 @@ public final class MainManager {
 		return callMethod(name, args);
 	}
 
+	public String[] loadedModNames() {
+		List<String> list = new ArrayList<>(allMods.size());
+		for (ModBase mb : allMods)
+			list.add(mb.getModInfo().getName());
+		return list.toArray(new String[list.size()]);
+	}
+
+	protected ModEnablingList getModEnablingList() {
+		return enableList;
+	}
+
 	public boolean enableMod(String modName, boolean throwException) {
 		boolean result = enableMod0(modName, throwException);
 		enableList.put(modName, result);
 		return result;
+	}
+
+	public ModBase findMod(String name) {
+		ModBase needReturn = null;
+		for (ModBase mb : allMods) {
+			if (mb.getModInfo().getName().equals(name)) {
+				needReturn = mb;
+			}
+			if (needReturn != null) {
+				if (mb.getModInfo().getName().equalsIgnoreCase(name)) {
+					needReturn = mb;
+				}
+				if (mb.getModInfo().getName().startsWith(name)) {
+					needReturn = mb;
+				}
+				if (mb.getModInfo().getName().toLowerCase()
+						.startsWith(name.toLowerCase())) {
+					needReturn = mb;
+				}
+			}
+		}
+		return needReturn;
 	}
 
 	private boolean enableMod0(String modName, boolean throwException) {
