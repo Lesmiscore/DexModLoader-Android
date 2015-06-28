@@ -23,6 +23,8 @@ public final class IntentActions {
 			+ "LOADER_DISABLED";
 	public final static String LOADER_DISABLE_ALL_TEMPORARILY = ACTION_PREFIX
 			+ "LOADER_DISABLE_ALL_TEMPORARILY";
+	public final static String LOADER_INTERNAL_LOG = ACTION_PREFIX
+			+ "LOADER_INTERNAL_LOG";
 
 	public final static String MOD_ENABLED_NOTIFY = ACTION_PREFIX
 			+ "MOD_ENABLED";
@@ -38,6 +40,8 @@ public final class IntentActions {
 			+ "MOD_LOADED_LIST";
 	public final static String MOD_ENABLED_LIST = ACTION_PREFIX
 			+ "MOD_ENABLED_LIST";
+
+	public final static String MOD_DETAIL = ACTION_PREFIX + "MOD_DETAIL";
 
 	public final static String HELPER_MAIN_OPEN = ACTION_PREFIX
 			+ "HELPER_MAIN_OPEN";
