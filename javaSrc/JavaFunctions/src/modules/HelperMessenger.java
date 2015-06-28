@@ -19,21 +19,29 @@ public class HelperMessenger extends BroadcastReceiver {
 		String action = intent.getAction();
 		c = context;
 		if (action.equals(IntentActions.HELPER_REQUEST_GET_MODS)) {
-			context.sendBroadcast(new Intent(IntentActions.MOD_LOADED_LIST)
-					.putExtra("list", mainManager.loadedModNames()));
-			context.sendBroadcast(new Intent(IntentActions.MOD_ENABLED_LIST)
+			c.sendBroadcast(new Intent(IntentActions.MOD_LOADED_LIST).putExtra(
+					"list", mainManager.loadedModNames()));
+			c.sendBroadcast(new Intent(IntentActions.MOD_ENABLED_LIST)
 					.putExtra("list", Base64.encode(mainManager
 							.getModEnablingList().serialize(), Base64.NO_WRAP)));
 		} else if (action.equals(IntentActions.HELPER_REQUEST_LOADER_LOG)) {
-			context.sendBroadcast(new Intent(IntentActions.LOADER_INTERNAL_LOG)
+			c.sendBroadcast(new Intent(IntentActions.LOADER_INTERNAL_LOG)
 					.putExtra("log", mainManager.getLog()));
 		} else if (action.equals(IntentActions.HELPER_REQUEST_MOD_DETAIL)) {
 			ModBase mb = mainManager.findMod(intent.getStringExtra("mod"));
-			context.sendBroadcast(new Intent(IntentActions.MOD_DETAIL)
+			c.sendBroadcast(new Intent(IntentActions.MOD_DETAIL)
 					.putExtra("name", mb.getModInfo().getName())
 					.putExtra("version", mb.getModInfo().getVersion())
 					.putExtra("className", mb.getClass().getName())
-					.putExtra("enabled", mb.getModInfo().getName()));
+					.putExtra("enabled",
+							mainManager.isEnabled(mb.getModInfo().getName())));
+		} else if (action.equals(IntentActions.BLOCKLAUNCHER_OPEN)) {
+			c.startActivity(new Intent()
+					.setClassName(
+							c,
+							c.getPackageName().equals(
+									"net.zhuoweizhang.mcpelauncher.pro") ? "net.zhuoweizhang.mcpelauncher.pro.LauncherProActivity"
+									: "net.zhuoweizhang.mcpelauncher.LauncherActivity"));
 		}
 	}
 
