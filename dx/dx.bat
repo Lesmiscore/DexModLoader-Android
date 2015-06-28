@@ -47,7 +47,7 @@ set args=
 
 REM By default, give dx a max heap size of 1 gig and a stack size of 1meg.
 rem This can be overridden by using "-JXmx..." and "-JXss..." options below.
-set defaultXmx=-Xmx4096M
+set defaultXmx=-Xmx256M
 set defaultXss=-Xss1024M
 
 REM Capture all arguments that are not -J options.
