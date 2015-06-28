@@ -193,6 +193,11 @@ public final class MainManager {
 							MainManager.class, Context.class).newInstance(this,
 							context);
 					writeLog(this, "Loaded mod:" + mod.getModInfo().getName());
+					if (findMod(mod.getModInfo().getName()) != null) {
+						writeLog(this, mod.getModInfo().getName()
+								+ " has already loaded, skipping...");
+						continue;
+					}
 					if (enableList.get(mod.getModInfo().getName())) {
 						writeLog(this, "Enabling mod:"
 								+ mod.getModInfo().getName());
@@ -277,6 +282,10 @@ public final class MainManager {
 			}
 		}
 		return needReturn;
+	}
+
+	public boolean isEnabled(String modName) {
+		return enableList.get(modName) | findMod(modName) != null;
 	}
 
 	private boolean enableMod0(String modName, boolean throwException) {
