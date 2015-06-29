@@ -12,7 +12,7 @@ var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
     //CLASSLOADER AREA
     /*Base 64 string of the DEX file*/
     var array = android.util.Base64.decode(mainDex, 0);
-    var fi = io.File(ctx.getFilesDir(), "javaModLoaderMain.dex");
+    var fi = io.File(ctx.getFilesDir(), "javaModLoaderMain.zip");
     var fos;
     try {
         fos = io.FileOutputStream(fi);
