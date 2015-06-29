@@ -214,3 +214,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+#build result
+dex.zip
+file*.jar
+result.js
