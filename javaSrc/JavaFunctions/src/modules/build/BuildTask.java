@@ -42,7 +42,7 @@ public class BuildTask {
 			}
 			System.out.println("Phase 1 finished, stating phase 2...");
 			while (true) {
-				ZipEntry ze = zis1.getNextEntry();
+				ZipEntry ze = zis2.getNextEntry();
 				if (ze == null)
 					break;
 				if (ze.getName().startsWith("META-INF")
@@ -51,7 +51,7 @@ public class BuildTask {
 				System.out.println("Copying: " + ze.getName());
 				zos.putNextEntry(new ZipEntry(ze.getName()));
 				while (true) {
-					int r = zis1.read(buffer);
+					int r = zis2.read(buffer);
 					if (r <= 0)
 						break;
 					zos.write(buffer, 0, r);
