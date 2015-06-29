@@ -1,14 +1,16 @@
 package modules;
 
+import modules.methods.ModMethods;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public abstract class ModBase implements ModHooks {
+public abstract class ModBase extends ModMethods implements ModHooks {
 	MainManager mm;
 	Context androidContext;
 	SharedPreferences config;
 
 	protected ModBase(MainManager mainManager, Context ctx) {
+		super(mainManager);
 		this.mm = mainManager;
 		this.androidContext = ctx;
 		this.config = ctx.getSharedPreferences("javaModLoader-Config-"

@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 import modules.MainManager;
 
-public final class ModMethods {
+public class ModMethods {
 	MainManager mm;
 	public ModPEObject ModPE = new ModPEObject();
 	public LevelObject Level = new LevelObject();
