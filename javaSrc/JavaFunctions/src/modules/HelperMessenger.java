@@ -42,6 +42,18 @@ public class HelperMessenger extends BroadcastReceiver {
 							c.getPackageName().equals(
 									"net.zhuoweizhang.mcpelauncher.pro") ? "net.zhuoweizhang.mcpelauncher.pro.LauncherProActivity"
 									: "net.zhuoweizhang.mcpelauncher.LauncherActivity"));
+		} else if (action.equals(IntentActions.LOADER_DISABLE_ALL_TEMPORARILY)) {
+			mainManager.mods.clear();
+		} else if (action.equals(IntentActions.ACTION_PREFIX)) {// unreachable,
+																// reserved for
+																// future
+																// release
+
+		} else if (action.equals(IntentActions.ACTION_PREFIX)) {// unreachable,
+																// reserved for
+																// future
+																// release
+
 		}
 	}
 
