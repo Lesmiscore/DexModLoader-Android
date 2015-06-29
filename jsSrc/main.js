@@ -5,7 +5,7 @@
 //Code Loader
 var io = java.io;
 var lang = java.lang;
-var mainDex = "";
+var mainDex = "%mainDex%";
 var mainManager, dxClass, hookObserver;
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 {
