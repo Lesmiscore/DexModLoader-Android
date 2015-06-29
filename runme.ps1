@@ -7,9 +7,14 @@ echo "Downloading latest js file..."
 $jsFile=$webClient.DownloadString("https://github.com/nao20010128nao/DexModLoader-Android/raw/master/jsSrc/main.js")
 echo "Downloading latest jar file..."
 $webClient.DownloadFile("https://github.com/nao20010128nao/DexModLoader-Android/raw/master/resources/app.jar","./file.jar")
+$jarFile=[system.io.file]::ReadAllBytes("./file.jar")
 echo "Converting jar file..."
-[System.Diagnostics.Process]::Start("java","-jar ./dx/lib/dx.jar --dex --multi-dex --main-dex-list=./file.jar ./dex.dex").WaitForExit()
+java -classpath ./file.jar modules.build.BuildTask ./file2.jar ./file.jar ./dx/lib/dx.jar
+java -jar ./dx/lib/dx.jar --dex --output=./dex.zip --multi-dex ./file2.jar
 $jfB64=[System.Convert]::ToBase64String($jarFile)
 echo "Making js file..."
 $jsResult=$jsFile.Replace("%mainDex%",$jfB64)
-echo "Downloading latest jar file..."
+echo "Writing..."
+[System.IO.File]::WriteAllText("./result.js",$jsResult)
+echo "Complete!"
+echo "The file is result.js"
