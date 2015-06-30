@@ -115,6 +115,9 @@ public class ModMethods {
 		mm.callMethod1("spawnPigZombie", new Object[] { x, y, z, id, skinURL });
 	}
 
+	/**
+	 * @hide
+	 * */
 	public class ModPEObject {
 		private ModPEObject() {
 		}
@@ -215,6 +218,9 @@ public class ModMethods {
 		}
 	}
 
+	/**
+	 * @hide
+	 * */
 	public class LevelObject {
 		private LevelObject() {
 		}
@@ -407,6 +413,9 @@ public class ModMethods {
 		}
 	}
 
+	/**
+	 * @hide
+	 * */
 	public class PlayerObject {
 		private PlayerObject() {
 		}
@@ -560,6 +569,9 @@ public class ModMethods {
 		}
 	}
 
+	/**
+	 * @hide
+	 * */
 	public class EntityObject {
 		private EntityObject() {
 		}
@@ -763,6 +775,9 @@ public class ModMethods {
 		}
 	}
 
+	/**
+	 * @hide
+	 * */
 	public class ItemObject {
 		private ItemObject() {
 		}
@@ -803,7 +818,7 @@ public class ModMethods {
 		}
 
 		/**
-		 * Equalent as {@code setCategory(id, category, null);}
+		 * Equvaluent as {@code setCategory(id, category, null);}
 		 * */
 		public void setCategory(int id, int category) {
 			setCategory(id, category, null);
@@ -819,6 +834,9 @@ public class ModMethods {
 		}
 	}
 
+	/**
+	 * @hide
+	 * */
 	public class BlockObject {
 		private BlockObject() {
 		}
@@ -875,6 +893,9 @@ public class ModMethods {
 		}
 	}
 
+	/**
+	 * @hide
+	 * */
 	public class ServerObject {
 		private ServerObject() {
 		}
