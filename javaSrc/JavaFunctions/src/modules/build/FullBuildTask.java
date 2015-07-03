@@ -67,8 +67,10 @@ public class FullBuildTask {
 					@Override
 					public boolean accept(File dir, String filename) {
 						// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
-						return filename.startsWith("META-INF")
-								| filename.startsWith("modules.build");
+						return !(filename.startsWith("META-INF")
+								| filename.startsWith("modules.build")
+								| filename.startsWith("com") | filename
+								.startsWith("org"));
 					}
 				});
 			} catch (Throwable ex) {
@@ -91,8 +93,8 @@ public class FullBuildTask {
 					@Override
 					public boolean accept(File dir, String filename) {
 						// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
-						return filename.startsWith("META-INF")
-								| filename.startsWith("modules.build");
+						return !(filename.startsWith("META-INF") | filename
+								.startsWith("modules.build"));
 					}
 				});
 			} catch (Throwable ex) {
@@ -116,8 +118,8 @@ public class FullBuildTask {
 					@Override
 					public boolean accept(File dir, String filename) {
 						// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
-						return filename.startsWith("META-INF")
-								| filename.startsWith("modules.build");
+						return !(filename.startsWith("META-INF") | filename
+								.startsWith("modules.build"));
 					}
 				});
 			} catch (Throwable ex) {
@@ -281,24 +283,4 @@ public class FullBuildTask {
 			if (!filter.accept(null, ze.getName()))
 				continue;
 			System.out.println("Copying: " + ze.getName());
-			zos.putNextEntry(ze);
-			while (true) {
-				int r = zis.read(buf);
-				if (r <= 0)
-					break;
-				zos.write(buf, 0, r);
-			}
-		}
-	}
-
-	public static ClassLoader loadDx() {
-		try {
-			return new URLClassLoader(new URL[] { new File("./lib/dx.jar")
-					.toURI().toURL() });
-		} catch (MalformedURLException e) {
-			// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸ catch ãƒ–ãƒ­ãƒƒã‚¯
-			e.printStackTrace();
-			return null;
-		}
-	}
-}
+			zos.putNextEnßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
