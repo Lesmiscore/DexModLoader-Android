@@ -45,8 +45,7 @@ public class BuildTask {
 				ZipEntry ze = zis2.getNextEntry();
 				if (ze == null)
 					break;
-				if (ze.getName().startsWith("META-INF")
-						| ze.getName().startsWith("modules.build"))
+				if (ze.getName().startsWith("META-INF"))
 					continue;
 				System.out.println("Copying: " + ze.getName());
 				zos.putNextEntry(new ZipEntry(ze.getName()));
